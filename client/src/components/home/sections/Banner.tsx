@@ -6,7 +6,7 @@ function Banner() {
   return (
     <section className="relative">
       <div className="h-[30rem] sm:h-[37rem]">
-      <img alt="banner" src="/banner_img.webp" className="h-full w-full object-cover" />
+      <img alt="banner" src="/banner_img.webp" className="h-full w-full object-cover opacity-75" />
     </div>
       <div className="absolute top-0  right-0 left-0  container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">

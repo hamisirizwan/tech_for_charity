@@ -8,16 +8,13 @@ function Footer() {
       <div className="space-y-3">
         <img src="/logo.webp" alt="logo" />
         <p className="text-sm text-gray-600">
-          Adier & Co. Legal is a full service law firm headquartered in
-          Nairobi, Kenya. We offer top level legal and business services to
-          both local and international clients. Our expertise on legal issues
-          cuts across borders.
+        At Humanity First Home, our mission is to provide hope, shelter, and support to those in need. We are dedicated to improving the lives of individuals and communities through our charitable initiatives.
         </p>
         <div className="flex items-center gap-4">
           <a href="https://instagram.com/adierco_legal?igshid=NzZhOTFlYzFmZQ==">
             <button className="bg-new-black p-2 rounded-full">
               <svg
-                className="w-5 h-auto text-gray-300"
+                className="w-5 h-auto text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -33,7 +30,7 @@ function Footer() {
           <a href="https://instagram.com/adierco_legal?igshid=NzZhOTFlYzFmZQ==">
             <button className="bg-new-black p-2 rounded-full">
               <svg
-                className="w-5 h-auto text-gray-300"
+                className="w-5 h-auto text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -49,7 +46,7 @@ function Footer() {
           <a href="https://www.linkedin.com/company/100754431/admin/feed/posts/">
             <button className="bg-new-black p-2 rounded-full">
               <svg
-                className="w-5 h-auto text-gray-300"
+                className="w-5 h-auto text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -72,7 +69,7 @@ function Footer() {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <svg
-              className="w-5 h-auto text-primary shrink-0"
+              className="w-5 h-auto text-[#ed3103] shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
@@ -89,7 +86,7 @@ function Footer() {
           </div>
           <div className="flex items-center gap-3">
             <svg
-              className="w-5 h-auto text-primary shrink-0"
+             className="w-5 h-auto text-[#ed3103] shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
@@ -100,31 +97,27 @@ function Footer() {
                 d="M19.95 21q-3.125 0-6.187-1.35T8.2 15.8q-2.5-2.5-3.85-5.55T3 4.05V3h5.9l.925 5.025l-2.85 2.875q.55.975 1.225 1.85t1.45 1.625q.725.725 1.588 1.388T13.1 17l2.9-2.9l5 1.025V21h-1.05Z"
               />
             </svg>
-            <p className="text-sm">+254 705 820 063</p>
+            <p className="text-sm">+254 768 793 923</p>
+          </div>
+          <div className="flex items-center gap-3">
+          <svg
+                className="w-5 h-auto text-[#ed3103] shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z"
+                />
+              </svg>
+
+            <p className="text-sm">TechForCharity</p>
           </div>
           <div className="flex items-center gap-3">
             <svg
-              className="w-5 h-auto text-primary shrink-0"
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="m20 8l-8 5l-8-5v10h16zm0-2H4l8 4.99z"
-                opacity=".3"
-              />
-              <path
-                fill="currentColor"
-                d="M4 20h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2zM20 6l-8 4.99L4 6h16zM4 8l8 5l8-5v10H4V8z"
-              />
-            </svg>
-            <p className="text-sm">info@adierandco.com</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <svg
-              className="w-5 h-auto text-primary shrink-0"
+            className="w-5 h-auto text-[#ed3103] shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
@@ -141,7 +134,7 @@ function Footer() {
       </div>
       <div className="space-y-10">
         <div className="border-l-2 border-primary pl-5">
-          <h2 className="text-xl font-semibold">Latest Articles</h2>
+          <h2 className="text-xl font-semibold">Quick Links</h2>
         </div>
         <div className="space-y-3">
           {/* <div className="space-y-2">
@@ -167,15 +160,15 @@ function Footer() {
         </div>
         <div className="space-y-3">
           <p className="text-sm">
-            Subscribe to receive regular updates from Adier & Co. Legal
+            Subscribe to receive regular updates from TechForCharity
           </p>
-          <div className="flex items-center bg-new-black rounded-md">
+          <div className="flex items-center bg-[#20417d] rounded-md">
             <input
               type="text"
               className="w-full px-4 text-white border-0 outline-none bg-transparent"
               placeholder="Email Address"
             />
-            <div className="bg-primary py-3 px-6 rounded-r-md">
+            <div className="bg-[#ed3103] py-3 px-6 rounded-r-md">
               <svg
                 className="text-white w-5 h-auto"
                 xmlns="http://www.w3.org/2000/svg"
@@ -193,9 +186,9 @@ function Footer() {
         </div>
       </div>
     </div>
-    <div className="bg-new-black px-10 sm:px-24 py-4 text-xs text-white flex items-center justify-between">
-      <p>© 2023 Adier & Co. All Rights Reserved</p>
-      <Link href="/private-policy">
+    <div className="bg-gray-700 px-10 sm:px-24 py-4 text-xs text-white flex items-center justify-between">
+      <p>© 2023 TechForCharity. All Rights Reserved</p>
+      <Link href="#">
         <p>Privacy Policy</p>
       </Link>
     </div>
