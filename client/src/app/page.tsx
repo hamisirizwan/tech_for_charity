@@ -1,7 +1,7 @@
 
 import Banner from '@/components/home/sections/Banner'
 import CTA from '@/components/home/sections/CTA'
-import HowWeWork from '@/components/home/sections/HowWeWork'
+import OurCauses from '@/components/home/sections/OurCauses'
 import Stats from '@/components/home/sections/Stats'
 import Team from '@/components/home/sections/Team'
 import type { Metadata } from 'next'
@@ -16,10 +16,10 @@ export default function Home() {
   return (
     <main >
       <Banner />
-      <CTA />
-      <HowWeWork />
+      <OurCauses />
       <Stats />
       <Team />
+      <CTA />
     </main>
   )
 }

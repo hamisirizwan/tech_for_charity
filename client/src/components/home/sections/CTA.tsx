@@ -2,17 +2,13 @@ import React from "react";
 
 function CTA() {
   return (
-    <section className="text-gray-600 body-font relative mx-auto w-full max-w-screen-2xl">
-      <div className="container px-5 py-4 mx-auto">
-        <div className="flex flex-col text-center w-full mb-8 md:mb-12">
-          <h1 className="sm:text-3xl text-2xl font-semibold title-font mb-4 text-secondary">
-            Support, Empower, Grow
-          </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base font-normal">
-            You can make a difference with every contribution. Invest your time
-            in honing your generosity.
-          </p>
-        </div>
+    <section className="py-4 bg-white sm:py-8 lg:py-12">
+  <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 space-y-4">
+      <div className="max-w-2xl mx-auto text-center">
+      <h2 className="text-2xl font-bold leading-tight text-secondary sm:text-3xl lg:text-4xl">Support, Empower, Grow</h2>
+      <p className="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-600 text-base">You can make a difference with every contribution. Invest your time
+            in honing your generosity.</p>
+    </div>
         <div className="flex justify-center">
           <button className="inline-flex  text-white bg-primary border-0 py-3 px-8 focus:outline-none  rounded-lg text-lg">
             Join as a Member
