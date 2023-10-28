@@ -5,7 +5,7 @@ function CTA() {
     <section className="text-gray-600 body-font relative mx-auto w-full max-w-screen-2xl">
       <div className="container px-5 py-4 mx-auto">
         <div className="flex flex-col text-center w-full mb-8 md:mb-12">
-          <h1 className="sm:text-3xl text-3xl font-semibold title-font mb-4 text-secondary">
+          <h1 className="sm:text-3xl text-2xl font-semibold title-font mb-4 text-secondary">
             Support, Empower, Grow
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base font-normal">

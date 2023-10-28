@@ -6,7 +6,7 @@ function HowWeWork() {
   <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div className="max-w-2xl mx-auto text-center">
       <h2 className="text-2xl font-bold leading-tight text-secondary sm:text-3xl lg:text-4xl">Our Causes</h2>
-      <p className="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-600">Discover the Heart of Our Organization: Empower Change Through Giving and Be a Part of Something Bigger</p>
+      <p className="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-600 text-base">Discover the Heart of Our Organization: Empower Change Through Giving and Be a Part of Something Bigger</p>
     </div>
     <div className="relative mt-12 lg:mt-20">
       <div className="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28">
