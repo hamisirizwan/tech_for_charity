@@ -1,5 +1,7 @@
+
 import Banner from '@/components/home/sections/Banner'
 import CTA from '@/components/home/sections/CTA'
+import HowWeWork from '@/components/home/sections/HowWeWork'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -13,6 +15,7 @@ export default function Home() {
     <main >
       <Banner />
       <CTA />
+     <HowWeWork />
     </main>
   )
 }
