@@ -1,54 +1,24 @@
-import Link from 'next/link';
 import React from 'react'
-import { useState } from "react";
 
 function NavBar() {
-  const [showNavlinks, setShowNavlinks] = useState(false);
   return (
-    <header className="py-5 md:px-10 px-5 flex items-center justify-between md:shadow-none shadow-md relative">
-
-    {/* logo */}
-    <Link href="/">
-      <img src="/logo.webp" alt="logo" className="" />
-    </Link>
-
-    {/* mobile menu */}
-    {/* <img
-      src="/images/logo.webp"
-      alt="logo"
-      className="md:hidden"
-      onClick={() => setShowNavlinks((prev) => !prev)}
-    /> */}
-
-<svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24"><path fill="currentColor" d="M3 18v-2h18v2H3Zm0-5v-2h18v2H3Zm0-5V6h18v2H3Z" className="md:hidden"
-      onClick={() => setShowNavlinks((prev) => !prev)} /></svg>
-
-    {/* mobile navlinks */}
-    <nav
-      className="flex-col items-start gap-8 text-base absolute top-[90px] left-0 bg-white w-full h-[480px] z-[1] p-5 pl-12"
-      style={showNavlinks ? { display: "flex" } : { display: "none" }}
-    >
-      <Link
-        className="text-gray-900 hover:text-[#009975] hover:underline transition-all duration-300 cursor-pointer"
-        href="/"
-        onClick={() => setShowNavlinks(false)}
-      >
-        Home
-      </Link>
-     
+ <header className="text-gray-600 body-font">
+  <div className="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+    <img src="/logo.webp" alt="logo" className="h-20" />
+    </a>
+    <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+      <a className="mr-5 hover:text-primary">Home</a>
+      <a className="mr-5 hover:text-primary">About Us</a>
+      <a className="mr-5 hover:text-primary">Our Projects</a>
+      <a className="mr-5 hover:text-primary">Impact Stories</a>
     </nav>
+    <button className="hidden md:inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-secondary font-bold">
+    DONATE
+    </button>
+  </div>
+</header>
 
-    {/* navlinks */}
-    <nav className="md:flex hidden items-center gap-5 text-base">
-      <Link
-        className="text-gray-900 hover:text-[#009975] hover:underline transition-all duration-300 cursor-pointer"
-        href="/"
-      >
-        Home
-      </Link>
-     
-    </nav>
-  </header>
   )
 }
 
