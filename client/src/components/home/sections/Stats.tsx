@@ -2,7 +2,7 @@ import React from 'react'
 
 function Stats() {
   return (
-<section className="py-4 bg-gray-100 sm:py-9 lg:py-12">
+<section className="py-6 bg-white sm:py-10 lg:py-12">
   <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
     <div className="max-w-2xl mx-auto text-center">
       <h2 className="text-2xl font-bold leading-tight text-secondary sm:text-3xl lg:text-4xl">Numbers tell our story</h2>
