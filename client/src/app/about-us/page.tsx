@@ -4,8 +4,11 @@ import ReactPlayer from 'react-player'
 
 function page() {
   return (
-<section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
-  <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+<section className="py-4 bg-gray-50 sm:py-8 lg:py-8">
+  <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8 ">
+  <h2 className="text-2xl font-bold leading-tight text-secondary sm:text-3xl lg:text-4xl text-center my-4 md:my-10">One Vedio Says It All</h2>
+
+ 
     <div className="grid items-center grid-cols-1 lg:items-stretch md:grid-cols-2 gap-y-8 gap-x-12 xl:gap-x-20">
       <div className="relative">
       <div className="aspect-w-4 aspect-h-4">
@@ -26,12 +29,12 @@ function page() {
           </div>
         </div> */}
       </div>
-  <div className="flex flex-col justify-between md:py-5">
+  <div className="flex flex-col justify-between md:py-6">
   <blockquote>
-    <p className="text-2xl leading-relaxed text-black">At Humanity First Home, we find purpose in visiting orphanages, providing nourishment to the less fortunate, and planting the seeds of a sustainable future. Our mission is driven by the belief that together, we can make the world a better place for all.</p>
+    <p className="text-lg leading-relaxed text-black">At Humanity First Home, we find purpose in visiting orphanages, providing nourishment to the less fortunate, and planting the seeds of a sustainable future. Our mission is driven by the belief that together, we can make the world a better place for all.</p>
   </blockquote>
-  <div className="mt-6 lg:mt-auto">
-    <p className="text-xl font-semibold text-black">Yahya Ali</p>
+  <div className="mt-2 lg:mt-auto">
+    <p className="text-lg font-semibold text-black">Yahya Ali</p>
     <p className="mt-2 text-base text-gray-600">Founder &amp; CEO</p>
   </div>
 </div>
