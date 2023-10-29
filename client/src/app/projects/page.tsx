@@ -22,7 +22,7 @@ function page() {
               <span className="px-4 py-2 text-xs font-semibold tracking-widest text-gray-900 uppercase bg-white rounded-full">Ongoing </span>
             </div>
           </div>
-          <span className="block mt-6 text-sm font-semibold tracking-widest text-gray-500 uppercase"> March 21, 2023 </span>
+          <span className="block mt-6 text-sm font-semibold tracking-widest text-gray-500 uppercase"> Sept 19, 2023 </span>
           <p className="mt-5 text-2xl font-semibold">
             <a href="#" title="" className="text-black"> Raise Fund for Clean & Healthy Water. </a>
           </p>
