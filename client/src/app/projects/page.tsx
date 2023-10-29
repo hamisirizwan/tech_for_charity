@@ -7,7 +7,7 @@ function page() {
     <div className="flex items-end justify-between">
       <div className="flex-1 text-center lg:text-left">
         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">View Our Projects</h2>
-        <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600 lg:mx-0">At humanity first home, We support the less privilaged in the society by involving ourselves in humanitarial aid projects</p>
+        <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600 lg:mx-0">At humanity first home, We support the less privilaged in the society by involving ourselves in humanitat</p>
       </div>
       <div className="hidden lg:flex lg:items-center lg:space-x-3">
         <button type="button" className="flex items-center justify-center text-gray-400 transition-all duration-200 bg-transparent border border-gray-300 rounded w-9 h-9 hover:bg-blue-600 hover:text-white focus:bg-blue-600 focus:text-white">

@@ -12,7 +12,7 @@ function NavBar() {
           <Link href="/" className="mr-5 hover:text-primary">
             Home
           </Link>
-          <Link href="/" className="mr-5 hover:text-primary">
+          <Link href="/about-us" className="mr-5 hover:text-primary">
             About Us
           </Link>
           <Link href="/projects" className="mr-5 hover:text-primary">
