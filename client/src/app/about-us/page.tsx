@@ -1,4 +1,6 @@
+
 import React from 'react'
+import ReactPlayer from 'react-player'
 
 function page() {
   return (
@@ -7,6 +9,7 @@ function page() {
     <div className="grid items-center grid-cols-1 lg:items-stretch md:grid-cols-2 gap-y-8 gap-x-12 xl:gap-x-20">
       <div className="relative">
       <div className="aspect-w-4 aspect-h-4">
+      {/* <ReactPlayer url='https://www.youtube.com/watch?v=wWgIAphfn2U' />  */}
  <video className="object-cover w-full h-full" controls>
   <source src="https://humanityfirsthome.org/wp-content/uploads/2023/01/WhatsApp-Video-2023-01-14-at-4.49.05-PM.mp4" type="video/mp4" />
   Your browser does not support the video tag.
