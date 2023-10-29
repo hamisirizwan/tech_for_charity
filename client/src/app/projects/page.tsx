@@ -26,7 +26,7 @@ function page() {
           <p className="mt-5 text-2xl font-semibold">
             <a href="#" title="" className="text-black"> Raise Fund for Clean & Healthy Water. </a>
           </p>
-          <p className="mt-4 text-base text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+          <p className="mt-4 text-base text-gray-600">As an organisation, we came together and build a borehole for kilifi residents.</p>
           <a href="#" title="" className="inline-flex items-center justify-center pb-0.5 mt-5 text-base font-semibold text-blue-600 transition-all duration-200 border-b-2 border-transparent hover:border-blue-600 focus:border-blue-600">
             View Details
             <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -74,7 +74,7 @@ function page() {
           <p className="mt-5 text-2xl font-semibold">
             <a href="#" title="" className="text-black"> Catering to Orphans. </a>
           </p>
-          <p className="mt-4 text-base text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+          <p className="mt-4 text-base text-gray-600">At our Organisation, we have a program to visit children orphanages every end month and show them love and compassion. Our recent visit being villa teag Children Home in Dandora, Nairobi, Kenya</p>
           <a href="#" title="" className="inline-flex items-center justify-center pb-0.5 mt-5 text-base font-semibold text-blue-600 transition-all duration-200 border-b-2 border-transparent hover:border-blue-600 focus:border-blue-600">
             View details
             <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
