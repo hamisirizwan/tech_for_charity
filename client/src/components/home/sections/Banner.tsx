@@ -1,8 +1,14 @@
+"use client"
+
+import usePaymentDialogStore from "@/store/paymentDialogStore";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 function Banner() {
+
+  const {openDialog} = usePaymentDialogStore((state)=>state)
+
   return (
     <section className="relative">
       <div className="h-[30rem] sm:h-[37rem]">
@@ -20,7 +26,7 @@ function Banner() {
             Better Place Through Compassion, Action, and Hope.
           </p>
           <div className="flex justify-center">
-            <button className="inline-flex  text-white bg-[#ED3103] border-0 py-3 px-8 focus:outline-none  rounded-lg text-lg">
+            <button onClick={()=>openDialog()} className="inline-flex  text-white bg-[#ED3103] border-0 py-3 px-8 focus:outline-none  rounded-lg text-lg">
               Donate For Humanity
             </button>
           </div>

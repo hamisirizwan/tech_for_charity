@@ -1,7 +1,10 @@
+import usePaymentDialogStore from "@/store/paymentDialogStore";
 import Link from "next/link";
 import React from "react";
 
 function NavBar() {
+  const {openDialog} = usePaymentDialogStore((state)=>state)
+
   return (
     <header className="text-gray-600 body-font">
       <div className="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -22,7 +25,7 @@ function NavBar() {
             Our Team
           </Link>
         </nav>
-        <button className="hidden md:inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-secondary font-bold">
+        <button onClick={()=>openDialog()} className="hidden md:inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-secondary font-bold">
           DONATE
         </button>
       </div>

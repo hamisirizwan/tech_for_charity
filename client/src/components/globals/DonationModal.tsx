@@ -1,9 +1,13 @@
+import usePaymentDialogStore from "@/store/paymentDialogStore";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import toast from 'react-hot-toast';
 
 export default function DonationModal() {
-  let [isOpen, setIsOpen] = useState(true);
+//   let [isOpen, setIsOpen] = useState(true);
+  const {isOpen, closeDialog} = usePaymentDialogStore((state)=>state)
   let [Amount, setAmount] = useState(0);
+  let [phone, setPhone] = useState("");
   const [selectedAmount, setSelectedAmount] = useState(null);
 
 
@@ -13,17 +17,27 @@ export default function DonationModal() {
   };
 
   function closeModal() {
-    setIsOpen(false);
+    if(!phone){
+        return toast.error("phone number is required")
+    }
+    if(Amount < 20){
+        return toast.error("donations below 20bob not allowed")
+    }
+    closeDialog();
+    setSelectedAmount(null);
+    setAmount(0);
+    setPhone("");
+    toast.success(`STK PUSH SENT ${phone}!\nEnter pin to confirm donation`, {
+        duration: 6000,
+    });
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  
 
-  const amounts: number[] = [100, 200, 300, 500, 1000];
+  const amounts: number[] = [100, 200, 300, 500, 1000, 5000, 10000];
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center">
+      {/* <div className="fixed inset-0 flex items-center justify-center">
         <button
           type="button"
           onClick={openModal}
@@ -31,10 +45,10 @@ export default function DonationModal() {
         >
           Open dialog
         </button>
-      </div>
+      </div> */}
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Dialog as="div" className="relative z-50" onClose={()=>{}}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -105,8 +119,23 @@ export default function DonationModal() {
                     </label>
                     <input
                       type="number"
-                      name="email"
+                      onChange={(e)=>setAmount(Number(e.target.value))}
                       value={Amount}
+                      className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+
+                  <div className="relative mb-4">
+                    <label
+                      htmlFor="email"
+                      className="leading-7 text-sm text-gray-600"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="text"
+                      onChange={(e)=>setPhone(e.target.value)}
+                      value={phone}
                       className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
