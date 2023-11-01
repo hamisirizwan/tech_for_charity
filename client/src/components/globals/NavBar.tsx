@@ -18,7 +18,9 @@ function NavBar() {
           <Link href="/projects" className="mr-5 hover:text-primary">
             Our Projects
           </Link>
-          <a className="mr-5 hover:text-primary">Impact Stories</a>
+          <Link href="/members" className="mr-5 hover:text-primary">
+            Our Team
+          </Link>
         </nav>
         <button className="hidden md:inline-flex items-center bg-primary border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-secondary font-bold">
           DONATE

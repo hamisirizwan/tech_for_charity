@@ -2,14 +2,13 @@ import React from 'react'
 
 function page() {
   return (
- <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
+ <section className="py-4 bg-gray-50 sm:py-8 lg:py-12">
   <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
     <div className="flex items-end justify-between">
       <div className="flex-1 text-center ">
         <h2 className="text-2xl font-bold leading-tight text-secondary sm:text-3xl lg:text-4xl">View Our Projects</h2>
         <p className="mt-4 text-base leading-relaxed text-gray-600 lg:mx-0 text-center">At humanity first home, We support the less privilaged in the society by ...</p>
       </div>
-      
     </div>
     <div className="grid max-w-md grid-cols-1 gap-6 mx-auto mt-8 lg:mt-16 lg:grid-cols-3 lg:max-w-full">
       <div className="overflow-hidden bg-white rounded shadow">
