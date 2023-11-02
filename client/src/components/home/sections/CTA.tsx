@@ -1,6 +1,11 @@
+"use client"
+
+import useJoiningDialogStore from "@/store/joiningDialogStore";
 import React from "react";
 
 function CTA() {
+  const { openDialog } = useJoiningDialogStore((state) => state);
+
   return (
     <section className="py-6 bg-gray-50 sm:py-10 lg:py-12">
   <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 space-y-4">
@@ -10,7 +15,7 @@ function CTA() {
             in honing your generosity.</p>
     </div>
         <div className="flex justify-center">
-          <button className="inline-flex  text-white bg-primary border-0 py-3 px-8 focus:outline-none  rounded-lg text-lg">
+          <button onClick={()=>openDialog()} className="inline-flex  text-white bg-primary border-0 py-3 px-8 focus:outline-none  rounded-lg text-lg">
             Join as a Member
           </button>
         </div>

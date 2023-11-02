@@ -5,6 +5,7 @@ import NavBar from '@/components/globals/NavBar'
 import Footer from '@/components/globals/Footer'
 import DonationModal from '@/components/globals/DonationModal'
 import { Toaster } from 'react-hot-toast';
+import RegistrationModal from '@/components/globals/JoiningRequestDialog'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         <NavBar />
         {children}
         <DonationModal />
+        <RegistrationModal />
         <Toaster 
   position="top-center"
   reverseOrder={false}
