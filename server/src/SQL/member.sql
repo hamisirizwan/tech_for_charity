@@ -6,6 +6,7 @@ CREATE TABLE members (
   last_name VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
   is_active BOOLEAN DEFAULT false,
+  is_approved BOOLEAN DEFAULT false,
   approvedBy INT,
   phone_number VARCHAR(50) NOT NULL UNIQUE,
   password TEXT,

@@ -7,10 +7,89 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique(map: "email") @db.VarChar(255)
-  username  String   @unique(map: "username") @db.VarChar(50)
-  password  String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(0)
+model admins {
+  id               Int              @id @default(autoincrement())
+  first_name       String           @db.VarChar(255)
+  last_name        String           @db.VarChar(255)
+  is_super_admin   Boolean?         @default(false)
+  is_deleted       Boolean?         @default(false)
+  official_role_id Int?
+  phone_number     String           @unique(map: "phone_number") @db.VarChar(50)
+  password         String           @db.VarChar(255)
+  createdAt        DateTime         @default(now()) @db.Timestamp(0)
+  official_roles   official_roles?  @relation(fields: [official_role_id], references: [id], onUpdate: Restrict, map: "admins_ibfk_1")
+  cash_donation    cash_donation[]
+  items_donation   items_donation[]
+  members          members[]
+
+  @@index([official_role_id], map: "official_role_id")
+}
+
+model cash_donation {
+  id             Int                          @id @default(autoincrement())
+  amount         String                       @db.VarChar(255)
+  receipt_no     String                       @db.VarChar(255)
+  payment_method cash_donation_payment_method
+  doners_name    String                       @db.VarChar(255)
+  receivedBy     Int?
+  phone_number   String                       @db.VarChar(50)
+  createdAt      DateTime                     @default(now()) @db.Timestamp(0)
+  admins         admins?                      @relation(fields: [receivedBy], references: [id], onUpdate: Restrict, map: "cash_donation_ibfk_1")
+
+  @@index([receivedBy], map: "receivedBy")
+}
+
+model donated_item {
+  id                Int            @id @default(autoincrement())
+  description       String         @db.VarChar(255)
+  items_donation_id Int
+  createdAt         DateTime       @default(now()) @db.Timestamp(0)
+  items_donation    items_donation @relation(fields: [items_donation_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "donated_item_ibfk_1")
+
+  @@index([items_donation_id], map: "items_donation_id")
+}
+
+model items_donation {
+  id           Int            @id @default(autoincrement())
+  doners_name  String         @db.VarChar(255)
+  receivedBy   Int?
+  phone_number String?        @db.VarChar(50)
+  createdAt    DateTime       @default(now()) @db.Timestamp(0)
+  donated_item donated_item[]
+  admins       admins?        @relation(fields: [receivedBy], references: [id], onUpdate: Restrict, map: "items_donation_ibfk_1")
+
+  @@index([receivedBy], map: "receivedBy")
+}
+
+model members {
+  id           Int      @id @default(autoincrement())
+  first_name   String   @db.VarChar(255)
+  last_name    String   @db.VarChar(255)
+  country      String   @db.VarChar(255)
+  is_active    Boolean? @default(false)
+  is_approved  Boolean? @default(false)
+  approvedBy   Int?
+  phone_number String   @unique(map: "phone_number") @db.VarChar(50)
+  password     String?  @db.Text
+  createdAt    DateTime @default(now()) @db.Timestamp(0)
+  approvedAt   DateTime @default(now()) @db.Timestamp(0)
+  admins       admins?  @relation(fields: [approvedBy], references: [id], onUpdate: Restrict, map: "members_ibfk_1")
+
+  @@index([approvedBy], map: "approvedBy")
+}
+
+model official_roles {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  description String   @db.Text
+  createdAt   DateTime @default(now()) @db.Timestamp(0)
+  admins      admins[]
+}
+
+enum cash_donation_payment_method {
+  bank
+  mpesa
+  cash
+  paypal
+  card_transfers @map("card transfers")
 }

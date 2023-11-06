@@ -23,21 +23,21 @@ const Auth = asyncHandler(async (req: apiREQ, res: Response, next: NextFunction)
     
       const decoded: any = jwt.verify(token, process.env.JWTSECRET!);
 
-      req.user = await prisma.users.findUnique({
+      req.user = await prisma.admins.findUnique({
         where: {
-          email: decoded.email,
+          phone_number: decoded.phone_number,
         },
       });
 
       next();
     } catch (error) {
       console.error(error);
-      res.status(401).json('Not authorized, token failed');
+      res.status(401).json({message:'Not authorized, token failed', status:401});
     }
   }
 
   if (!token) {
-    res.status(401).json('Not authorized, no token');
+    res.status(401).json({message:'Not authorized, no token', status:401});
     // You can also throw an error if you prefer
     // throw new Error('Not authorized, no token');
   }
