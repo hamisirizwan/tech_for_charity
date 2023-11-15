@@ -3,6 +3,7 @@ import 'package:user_app/screens/joinUs_screen.dart';
 import 'package:user_app/screens/login_screen.dart';
 import 'package:user_app/screens/main/home_screen.dart';
 import 'package:user_app/screens/main/pages/payment_page.dart';
+import 'package:user_app/screens/main/pages/profile_page.dart';
 import 'package:user_app/screens/main/pages/single_campaign_screen.dart';
 import 'package:user_app/screens/onboarding_screen.dart';
 import 'package:user_app/screens/splash_screen.dart';
@@ -15,6 +16,7 @@ static const String joinUsScreen = '/joinUs_screen';
 static const String homeScreen = '/home_screen';
 static const String singleCampaignScreen = '/single_campaign_screen';
 static const String paymentScreen = '/payment_screen';
+static const String profileScreen = '/profile_screen';
 
 
 static Map<String, WidgetBuilder> routes = {
@@ -25,5 +27,6 @@ static Map<String, WidgetBuilder> routes = {
     homeScreen: (context) => const HomePage(),
     singleCampaignScreen: (context) => const SingleCampaignScreen(),
     paymentScreen: (context) => const PaymentScreen(),
+    profileScreen: (context) => const ProfileScreen(),
   };
 }

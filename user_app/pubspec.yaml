@@ -38,6 +38,7 @@ dependencies:
   flutter_native_splash: ^2.3.5
   provider: ^6.1.1
   flutter_svg:
+  fluttertoast: ^8.2.4
 
 flutter_native_splash:
   android: true

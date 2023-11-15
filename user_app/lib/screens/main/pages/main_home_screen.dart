@@ -21,15 +21,41 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           children: [
             //name
             Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text(
-                "Hello Rizwan,",
-                style: TextStyle(
-                  fontSize: 30.0,
-                  color: fromHex("#20417d"),
-                ),
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Hello Rizwan,",
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      color: fromHex("#20417d"),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, AppRoutes.profileScreen);
+                    },
+                    child: Container(
+                      width: 34.0,
+                      height: 34.0,
+                      decoration:  BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: fromHex("#20417d"), // You can change the background color
+                      ),
+                      child: const Center(
+                        child: Icon(
+                          Icons.person,
+                          size: 30.0, // You can adjust the icon size
+                          color: Colors.white, // You can change the icon color
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
+
             const SizedBox(
               height: 25,
             ),
