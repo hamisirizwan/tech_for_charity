@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_app/screens/main/components/empy_data_screen.dart';
 
 class CampaignScreen extends StatefulWidget {
   const CampaignScreen({super.key});
@@ -18,9 +19,7 @@ class _CampaignScreenState extends State<CampaignScreen> {
           elevation: 0,
     
         ),
-        body: const Center(
-          child: Text("CAMPAIGNS PAGE"),
-        ),
+        body: const EmptyData(text: "Campaigns",)
       ),
     );
   }

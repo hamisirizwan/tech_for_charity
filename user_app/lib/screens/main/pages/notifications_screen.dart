@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_app/screens/main/components/empy_data_screen.dart';
 // import 'package:user_app/utilities/color_from_hex.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -19,9 +20,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           elevation: 0,
           // backgroundColor: fromHex("#ed3103"),
         ),
-        body: const Center(
-          child: Text("Notifications PAGE"),
-        ),
+        body: const EmptyData(text: "Notifications",)
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_app/screens/main/components/empy_data_screen.dart';
 
 class MyDonations extends StatefulWidget {
   const MyDonations({super.key});
@@ -17,9 +18,7 @@ class _MyDonationsState extends State<MyDonations> {
           centerTitle: true,
           elevation: 0,
         ),
-        body: const Center(
-          child: Text("My Donation Page"),
-        ),
+         body: const EmptyData(text: "Donations",)
       ),
    );
   }
