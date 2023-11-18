@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:user_app/screens/main/components/empy_data_screen.dart';
-import 'package:user_app/screens/main/components/event_card.dart';
+
+import 'package:user_app/screens/main/pages/campaignTabs/donation_challanges.dart';
+import 'package:user_app/screens/main/pages/campaignTabs/orphanage_visits.dart';
+import 'package:user_app/screens/main/pages/campaignTabs/tree_planting_tab.dart';
+import 'package:user_app/utilities/color_from_hex.dart';
 
 class CampaignScreen extends StatefulWidget {
   const CampaignScreen({super.key});
@@ -11,32 +14,55 @@ class CampaignScreen extends StatefulWidget {
 
 class _CampaignScreenState extends State<CampaignScreen> {
   // Example list of events
-  List<String> eventTitles = [
-    'Event 1',
-    'Event 2',
-    'Event 3',
-    // Add more events as needed
-  ];
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Campaigns"),
-          centerTitle: true,
-          elevation: 0,
+      child: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Campaigns"),
+            centerTitle: true,
+            elevation: 0,
+          ),
+          body:  Column(
+            children: [
+                   TabBar(
+                    isScrollable: true,
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          "Orphanage Visits",
+                          style: TextStyle(color: fromHex("#20417d"), fontSize: 16),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          "Tree Planting",
+                          style: TextStyle(color: fromHex("#20417d"), fontSize: 16),
+                        ),
+                      ),
+                        Tab(
+                        child: Text(
+                          "Donation Challanges",
+                          style: TextStyle(color: fromHex("#20417d"), fontSize: 16),
+                        ),
+                      )
+                    ],
+                  ),
+
+                  const Expanded(child: TabBarView(children: 
+                  [
+                    OrphanageVisitTab(),
+                    TreePlantingTab(),
+                    DonationChallangesTab()
+                  ]
+                  ),)
+            ],
+          )
         ),
-        body: eventTitles.isEmpty
-            ? const EmptyData(text: "Campaigns",) // Display this when there are no events
-            : ListView.builder(
-                itemCount: eventTitles.length,
-                itemBuilder: (context, index) {
-                  return const EventCard(
-                    
-                  );
-                },
-              ),
       ),
     );
   }

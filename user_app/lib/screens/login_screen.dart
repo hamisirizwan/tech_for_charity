@@ -174,8 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   //       content: Text('Loging In...')),
                                   // );
 
-                                  Navigator.pushNamed(
-                                      context, AppRoutes.homeScreen);
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, AppRoutes.homeScreen, (route) => false);
                                 }
                               },
                               style: ElevatedButton.styleFrom(

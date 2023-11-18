@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_app/constants/image_paths.dart';
+import 'package:user_app/routes/app_routes.dart';
 import 'package:user_app/utilities/color_from_hex.dart';
 
 class EventCard extends StatelessWidget {
@@ -37,14 +38,33 @@ class EventCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
-                        children: [Icon(Icons.people), Text("4 attendees")],
+                        children: [
+                          Icon(
+                            Icons.people,
+                            color: Colors.blueGrey[700],
+                          ),
+                          SizedBox(width: 8,),
+                          const Text("4 attendees")
+                        ],
                       ),
-                      Row(
-                        children: [Icon(Icons.people), Text("Share")],
+                      GestureDetector(
+                        onTap: (){
+                         //share logic
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.share,
+                              color: Colors.blueGrey[700],
+                            ),
+                              const SizedBox(width: 8,),
+                            const Text("Share")
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -93,7 +113,7 @@ class EventCard extends StatelessWidget {
             height: 15,
           ),
           //date
-           Container(
+          Container(
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
             decoration: BoxDecoration(
                 color: Colors.grey[300],
@@ -110,24 +130,26 @@ class EventCard extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 25,),
-            GestureDetector(
-                onTap: () {},
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: fromHex("#20417d"),
-                      borderRadius: BorderRadius.circular(16.0)),
-                  child: const Text(
-                    "Join Event",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, color: Colors.white),
-                  ),
-                ),
+          const SizedBox(
+            height: 25,
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.eventDetailsPage);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: fromHex("#20417d"),
+                  borderRadius: BorderRadius.circular(16.0)),
+              child: const Text(
+                "View Event",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14, color: Colors.white),
               ),
-  
-
+            ),
+          ),
         ],
       ),
     );
