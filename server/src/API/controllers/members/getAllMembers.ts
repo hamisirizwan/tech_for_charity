@@ -9,9 +9,21 @@ const getAllMembers = async (req: Request, res: Response) => {
 
   try {
 
-const members = await prisma.members.findMany({
+const members = await prisma.users.findMany({
     orderBy:{
         createdAt:'desc'
+    },
+    include:{
+       user_roles:{
+        include:{
+          roles:{
+            include:{
+              role_permissions:true
+            }
+         
+          }
+        }
+       }
     }
 })
 

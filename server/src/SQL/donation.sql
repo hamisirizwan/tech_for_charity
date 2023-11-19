@@ -5,28 +5,35 @@ CREATE TABLE cash_donation (
   amount VARCHAR(255) NOT NULL,
   receipt_no VARCHAR(255) NOT NULL,
   payment_method ENUM("bank","mpesa", "cash", "paypal", "card transfers") NOT NULL,
-  doners_name VARCHAR(255) NOT NULL,
+  is_donor_member BOOLEAN DEFAULT false,
+  donors_name VARCHAR(255) NOT NULL,
+  donatedBy INT,
   receivedBy INT,
-  phone_number VARCHAR(50) NOT NULL,
+  phone_number VARCHAR(50),
+  email VARCHAR(255),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (receivedBy) REFERENCES admins(id) ON DELETE SET NULL
+  FOREIGN KEY (receivedBy) REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (donatedBy) REFERENCES users(id) ON DELETE SET NULL
 );
 
 --@block
 SELECT * FROM cash_donation;
 
-
-
 --  item donation
+--@block
 DROP TABLE items_donation;
 --@BLOCK
 CREATE TABLE items_donation (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  is_donor_member BOOLEAN DEFAULT false,
   doners_name VARCHAR(255) NOT NULL,
+  donatedBy INT,
   receivedBy INT,
   phone_number VARCHAR(50),
+  email VARCHAR(255),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (receivedBy) REFERENCES admins(id) ON DELETE SET NULL
+  FOREIGN KEY (donatedBy) REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (receivedBy) REFERENCES users(id) ON DELETE SET NULL
 );
 
 --@block
@@ -34,6 +41,7 @@ SELECT * FROM items_donation;
 
 
 -- donated item
+--@block
 DROP TABLE donated_item;
 --@BLOCK
 CREATE TABLE donated_item (

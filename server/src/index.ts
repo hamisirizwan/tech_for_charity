@@ -18,7 +18,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("health check 100%");
 });
 
-app.use("/api", ROUTER);
+app.use("/api/v1", ROUTER);
 
 app.listen(port, () => {
   console.log(`app is running at port ${port}`);

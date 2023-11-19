@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "seed:superadmin": "ts-node src/api/seeders/super_admin_seeder.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +16,13 @@
   "dependencies": {
     "@prisma/client": "^4.16.2",
     "@types/multer": "^1.4.9",
+    "africastalking": "^0.6.4",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "email-validator": "^2.0.4",
+    "envalid": "^8.0.0",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",

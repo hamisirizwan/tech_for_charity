@@ -16,7 +16,7 @@ if(!id){
     return res.status(400).json({message:`member id is required`, status:400});
 }
 
-const existingMember = await prisma.members.findUnique({
+const existingMember = await prisma.users.findUnique({
     where:{
         id:parseInt(id)
     }
@@ -34,7 +34,7 @@ const dataToUpdate = {
     approvedAt: dateGenerators.getCurrentTimestamp()
 }
 
-const updatedMember = await prisma.members.update({
+const updatedMember = await prisma.users.update({
     data:dataToUpdate,
     where:{
         id:parseInt(id)
