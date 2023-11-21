@@ -10,7 +10,7 @@ const router = Router();
 router.post("/login", login)
 router.post('/joining-request', sendJoiningRequest);
 router.put('/approve/:id',Auth, checkPermissions("APPROVE_USER:USERS"),approveMember);
-router.get('/get-all', getAllMembers);
+router.get('/get-all',Auth,checkPermissions("VIEW_USERS:USERS"),getAllMembers);
 router.get("/get-all-admins", getAllAdmins)
 
 
