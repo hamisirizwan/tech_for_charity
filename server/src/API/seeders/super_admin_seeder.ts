@@ -70,7 +70,10 @@ const seedSuperAdmin = async () => {
                     country: ADMIN_COUNTRY,
                     phone_number: ADMIN_PHONE_NUMBER,
                     city: ADMIN_CITY,
-                    password: hashedPass
+                    password: hashedPass,
+                    is_active:true,
+                    is_admin:true,
+                    is_approved:true
                 }
             });
 

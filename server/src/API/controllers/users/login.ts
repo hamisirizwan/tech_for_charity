@@ -12,11 +12,11 @@ const login = async (req: Request, res: Response) => {
   try {
     const missingField = missingRequiredParams(["phone", "password"], req.body);
     if (missingField) {
-      return res.status(400).json(`${missingField} is required`);
+      return res.status(400).json({message:`${missingField} is required`, status:400});
     }
 
     // find user
-    const existingUser = await prisma.admins.findUnique({
+    const existingUser = await prisma.users.findFirst({
       where: {
         phone_number: phone,
       },
@@ -26,8 +26,15 @@ const login = async (req: Request, res: Response) => {
       return res.status(400).json({message:`user with phone: ${phone} not found`, status:400});
     }
 
+    if(!existingUser.is_approved){
+        return res.status(403).json({message:"User pending approval", status:403})
+    }
+
+    if(!existingUser.is_active){
+      return res.status(403).json({message:"User inactive", status:403})
+  }
     // validate password
-    const validPassword = await bcrypt.compare(password, existingUser.password);
+    const validPassword = await bcrypt.compare(password, existingUser.password!);
     if (!validPassword) {
       return res.status(400).json({message:"wrong password" , status:400});
     }

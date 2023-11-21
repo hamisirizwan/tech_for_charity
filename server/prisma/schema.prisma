@@ -7,20 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model admins {
-  id               Int             @id @default(autoincrement())
-  first_name       String          @db.VarChar(255)
-  last_name        String          @db.VarChar(255)
-  is_super_admin   Boolean?        @default(false)
-  is_deleted       Boolean?        @default(false)
-  official_role_id Int?
-  phone_number     String          @unique(map: "phone_number") @db.VarChar(50)
-  password         String          @db.VarChar(255)
-  createdAt        DateTime        @default(now()) @db.Timestamp(0)
-  official_roles   official_roles? @relation(fields: [official_role_id], references: [id], onUpdate: Restrict, map: "admins_ibfk_1")
-
-  @@index([official_role_id], map: "official_role_id")
-}
 
 model cash_donation {
   id                                    Int                          @id @default(autoincrement())
@@ -68,13 +54,7 @@ model items_donation {
   @@index([receivedBy], map: "receivedBy")
 }
 
-model official_roles {
-  id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(255)
-  description String   @db.Text
-  createdAt   DateTime @default(now()) @db.Timestamp(0)
-  admins      admins[]
-}
+
 
 model role_permissions {
   id        Int      @id @default(autoincrement())

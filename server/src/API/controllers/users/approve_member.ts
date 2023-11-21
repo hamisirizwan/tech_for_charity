@@ -3,6 +3,9 @@ import prisma from '../../DB/prisma';
 import { Request, Response } from 'express';
 import { apiREQ } from '../../types/globals/express.types';
 import { dateGenerators } from '../../utilities/dates';
+import generator from '../../utilities/generators';
+import bcrypt from 'bcryptjs';
+import notify from '../../utilities/notifications';
 
 
 
@@ -27,11 +30,17 @@ if(!existingMember){
 }
 
 //update the member to approved and active
+
+const generatedPassword = generator.password()
+
+const hashedPass = await bcrypt.hash(generatedPassword, 10);
+
 const dataToUpdate = {
     is_active:true,
     is_approved: true,
     approvedBy:req.user?.id,
-    approvedAt: dateGenerators.getCurrentTimestamp()
+    approvedAt: dateGenerators.getCurrentTimestamp(),
+    password:hashedPass
 }
 
 const updatedMember = await prisma.users.update({
@@ -41,9 +50,10 @@ const updatedMember = await prisma.users.update({
     }
 })
 
-console.log(updatedMember)
-const message = `Hello ${updatedMember.first_name} ${updatedMember.last_name},\nYour membership request to join HUMANITY FIRST HOME has been approved. Welcome to the family. One of our admins will reach out to you for more details\nOne Smile Matters, Humnity Matters`
-console.log(message)
+
+const message = `Hello ${updatedMember.first_name} ${updatedMember.last_name},\nYour membership request to join HUMANITY FIRST HOME has been approved. Welcome to the family. Your Password is ${generatedPassword}\nOne Smile Matters, Humnity Matters`
+
+notify.sms(existingMember.phone_number, message);
     res.status(200).json({ data:{},message: 'member approved successfully' });
   } catch (error:any) {
     console.log(error);

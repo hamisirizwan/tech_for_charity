@@ -9,7 +9,10 @@ const getAllAdmins = async (req: Request, res: Response) => {
 
   try {
 
-const admins = await prisma.admins.findMany({
+const admins = await prisma.users.findMany({
+  where:{
+    is_admin:true
+  },
     orderBy:{
         createdAt:'desc'
     }

@@ -1,5 +1,7 @@
 import approveMember from "./approve_member";
+import getAllAdmins from "./getAdmins";
 import getAllMembers from "./getAllMembers";
 import sendJoiningRequest from "./joining_request";
+import login from "./login";
 
-export {sendJoiningRequest,getAllMembers,approveMember}
+export {login,sendJoiningRequest,getAllMembers,approveMember, getAllAdmins}
