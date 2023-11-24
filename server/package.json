@@ -11,6 +11,8 @@
     "postinstall": "prisma db push && prisma generate",
     "seed:superadmin": "ts-node src/api/seeders/super_admin_seeder.ts"
   },
+
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
