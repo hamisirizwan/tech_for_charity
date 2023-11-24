@@ -8,11 +8,11 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "postinstall": "prisma db push && prisma generate",
+    "postinstall": "prisma generate",
     "seed:superadmin": "ts-node src/api/seeders/super_admin_seeder.ts"
   },
 
-  
+
   "keywords": [],
   "author": "",
   "license": "ISC",
