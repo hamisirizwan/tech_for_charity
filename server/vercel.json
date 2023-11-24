@@ -11,9 +11,5 @@
         "src": "/(.*)",
         "dest": "/src/index.ts"
       }
-    ],
-    "scripts": {
-       
-        "postbuild": "npm run seed:superadmin"
-      }
+    ]
   }
