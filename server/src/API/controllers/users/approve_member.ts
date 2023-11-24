@@ -7,9 +7,6 @@ import generator from '../../utilities/generators';
 import bcrypt from 'bcryptjs';
 import notify from '../../utilities/notifications';
 
-
-
-
 const approveMember = async (req: apiREQ, res: Response) => {
 
   try {
@@ -51,7 +48,7 @@ const updatedMember = await prisma.users.update({
 })
 
 
-const message = `Hello ${updatedMember.first_name} ${updatedMember.last_name},\nYour membership request to join HUMANITY FIRST HOME has been approved. Welcome to the family. Your Password is ${generatedPassword}\nOne Smile Matters, Humnity Matters`
+const message = `Hello ${updatedMember.first_name} ${updatedMember.last_name},\nYour membership request to join HUMANITY FIRST HOME has been approved. Welcome to the family. Your Password is ${generatedPassword}\nOne Smile Matters, Humanity Matters`
 
 notify.sms(existingMember.phone_number, message);
     res.status(200).json({ data:{},message: 'member approved successfully' });
