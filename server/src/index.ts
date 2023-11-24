@@ -16,13 +16,13 @@ app.use(morgan("tiny"));
 app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
+  seedSuperAdmin()
   res.send("health check 100%");
 });
 
 app.use("/api/v1", ROUTER);
 
 app.listen(port, () => {
-  seedSuperAdmin()
   console.log(`app is running at port ${port}`);
 });
 
