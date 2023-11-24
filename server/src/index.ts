@@ -3,7 +3,7 @@ import { config } from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import ROUTER from "./API/routes";
-import seedSuperAdmin from "./API/seeders/super_admin_seeder";
+// import seedSuperAdmin from "./API/seeders/super_admin_seeder";
 
 const app = express();
 config(); // Load environment variables
@@ -19,10 +19,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("health check 100%");
 });
 
-app.get("/test", (req: Request, res: Response) => {
-  seedSuperAdmin()
-  res.send("health check 100%");
-});
 
 app.use("/api/v1", ROUTER);
 

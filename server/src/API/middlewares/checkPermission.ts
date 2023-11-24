@@ -8,6 +8,7 @@ const checkPermissions = (requiredPermission: string) => {
     // Get the user object from the request
     const user = request.user;
 
+  
     // Check if user is an admin
     if (user && user.is_admin) {
       // Check if the user has the required permission

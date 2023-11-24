@@ -25,7 +25,7 @@ function groupPermissionsByModule(role_permissions: any[]): GroupedPermission[] 
 
         if (!groupedPermissions[moduleName]) {
             groupedPermissions[moduleName] = {
-                module: moduleName,
+                module: moduleName.split('_').join(' '),
                 permissions: [],
             };
         }

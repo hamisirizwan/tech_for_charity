@@ -34,7 +34,7 @@ const sendJoiningRequest = async (req: Request, res: Response) => {
         });
     }
 
-    const addedMember = await prisma.users.create({
+     await prisma.users.create({
       data: {
         phone_number,
         first_name,
@@ -49,7 +49,7 @@ const sendJoiningRequest = async (req: Request, res: Response) => {
     const message: string = `Hello ${first_name} ${last_name}.\nYour Request to join HUMANITY FIRST HOME has been received.\nOne of our admins will reach out to you for further clarifications`;
 
     // console.log(message)
-    console.log(addedMember)
+    // console.log(addedMember)
 
     //send message
     notify.sms(phone_number, message);
