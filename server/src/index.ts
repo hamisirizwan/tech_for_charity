@@ -16,6 +16,10 @@ app.use(morgan("tiny"));
 app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
+  res.send("health check 100%");
+});
+
+app.get("/test", (req: Request, res: Response) => {
   seedSuperAdmin()
   res.send("health check 100%");
 });
