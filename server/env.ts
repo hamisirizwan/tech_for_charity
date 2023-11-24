@@ -1,7 +1,6 @@
 import { cleanEnv, str, port } from 'envalid';
 
 export const env = cleanEnv(process.env, {
-  PORT: port(),
   DATABASE_URL: str(),
   JWTSECRET: str(),
   AT_API_KEY: str(),
