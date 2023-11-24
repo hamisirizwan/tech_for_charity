@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import ROUTER from "./API/routes";
+import seedSuperAdmin from "./API/seeders/super_admin_seeder";
 
 const app = express();
 config(); // Load environment variables
@@ -21,6 +22,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/v1", ROUTER);
 
 app.listen(port, () => {
+  seedSuperAdmin()
   console.log(`app is running at port ${port}`);
 });
 
