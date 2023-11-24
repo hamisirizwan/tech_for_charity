@@ -23,3 +23,5 @@ app.use("/api/v1", ROUTER);
 app.listen(port, () => {
   console.log(`app is running at port ${port}`);
 });
+
+export {app}
