@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
   return (
     <div>
-          <h1 className="text-4xl font-semibold text-gray-800 ">
+          <h1 className="text-3xl font-semibold text-gray-800 ">
           Good afternoon, Charlie
         </h1>
         <h2 className="text-gray-400 text-md">

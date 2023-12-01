@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from 'next/navigation'
+// import axios from "axios";
+import { instance as axios } from "@/utils/axios";
 
 function page() {
   const router = useRouter()
@@ -10,7 +12,7 @@ function page() {
     identifier: "",
     password: "",
   });
-  function handleSubmit(e: React.SyntheticEvent) {
+  async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
     const { identifier, password } = userData;
@@ -21,11 +23,30 @@ function page() {
       });
     }
 
-    toast.success(`Login successfull`, {
-      duration: 4000,
-    });
+    //login logic goes here
 
-    router.push("/dashboard")
+    try {
+      const response = await axios.post("/users/login", userData)
+      
+          //state management done here - logginf in user
+          toast.success(`Login successfull`, {
+            duration: 4000,
+          });
+      
+          router.push("/dashboard")
+    } catch (error : any) {
+      if(error.response.data){
+        toast.error(error?.response?.data?.message, {
+          duration: 4000,
+        });
+      }else{
+        toast.error("something wrong happened", {
+          duration: 4000,
+        });
+      }
+  
+    }
+
   }
   return (
     <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
@@ -71,6 +92,7 @@ function page() {
                       <input
                         type="text"
                         name="identifier"
+                        required
                         placeholder="Enter email or phone number"
                         onChange={(e)=>{setUserData({...userData, [e.target.name]:e.target.value})}}
                         className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
@@ -108,6 +130,7 @@ function page() {
                       <input
                         type="password"
                         name="password"
+                        required
                         onChange={(e)=>{setUserData({...userData, [e.target.name]:e.target.value})}}
                         placeholder="Enter your password"
                         className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
