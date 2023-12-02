@@ -1,10 +1,13 @@
+"use client"
+import useAuthStore from '@/store/userSlice'
 import React from 'react'
 
 function Home() {
+  const {user} = useAuthStore()
   return (
     <div>
           <h1 className="text-3xl font-semibold text-gray-800 ">
-          Good afternoon, Charlie
+          Good afternoon, {user?.first_name} {user?.last_name}
         </h1>
         <h2 className="text-gray-400 text-md">
           Here's what's happening with your humanity account today.

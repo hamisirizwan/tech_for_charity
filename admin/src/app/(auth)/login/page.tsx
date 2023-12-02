@@ -5,9 +5,12 @@ import toast from "react-hot-toast";
 import { useRouter } from 'next/navigation'
 // import axios from "axios";
 import { instance as axios } from "@/utils/axios";
+import useAuthStore from "@/store/userSlice";
 
 function page() {
   const router = useRouter()
+
+ const {login} = useAuthStore()
   const [userData, setUserData] = useState({
     identifier: "",
     password: "",
@@ -28,12 +31,14 @@ function page() {
     try {
       const response = await axios.post("/users/login", userData)
       
+   
+      login(response.data)
           //state management done here - logginf in user
           toast.success(`Login successfull`, {
             duration: 4000,
           });
       
-          router.push("/dashboard")
+          router.replace("/dashboard")
     } catch (error : any) {
       if(error.response.data){
         toast.error(error?.response?.data?.message, {
