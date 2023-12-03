@@ -2,13 +2,13 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 
 export default function Home() {
 
   
   const router = useRouter()
-  useEffect(() => {
+  useLayoutEffect(() => {
      router.push("/login")
   }, [])
 
