@@ -1,29 +1,21 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import { Providers } from "@/utils/Providers";
 
-
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Toaster } from 'react-hot-toast'
-
-
-const inter = Inter({ subsets: ['latin'] })
-
-
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Toaster 
-  position="top-center"
-  reverseOrder={false}
-/>
-        {children}</body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
-  )
+  );
 }

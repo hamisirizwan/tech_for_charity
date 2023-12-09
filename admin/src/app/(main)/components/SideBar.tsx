@@ -32,7 +32,7 @@ function SideBar() {
                 </svg>
               </span>
               <span className="mx-2 text-sm font-normal">
-                Membership Requests
+                User Access
               </span>
             </Link>
             <Link href="/dashboard" className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800">
