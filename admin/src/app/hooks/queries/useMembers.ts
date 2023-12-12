@@ -2,10 +2,10 @@ import { instance as axios } from '@/utils/axios';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 
-function useRoles() {
-    const fetchPayments = async () => {
+function useMembers() {
+    const fetchData = async () => {
         try {
-          const {data} = await axios.get("/access/get-roles");
+          const {data} = await axios.get("/users/get-all");
         console.log(data.data)
           return data.data;
         } catch (error) {
@@ -13,7 +13,7 @@ function useRoles() {
         }
       };
 
-  return useQuery({ queryKey: ['roles'], queryFn: fetchPayments })
+  return useQuery({ queryKey: ['members'], queryFn: fetchData })
 }
 
-export default useRoles
+export default useMembers

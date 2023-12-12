@@ -2,7 +2,7 @@ import React from 'react'
 import TopMembersSection from './components/TopMembersSection'
 import MembersTable from './components/MembersTable'
 
-function Members() {
+function MemberShipRequest() {
   return (
     <div>
       <TopMembersSection />
@@ -11,4 +11,4 @@ function Members() {
   )
 }
 
-export default Members
+export default MemberShipRequest
