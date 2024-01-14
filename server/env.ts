@@ -12,4 +12,10 @@ export const env = cleanEnv(process.env, {
   ADMIN_PASSWORD: str(),
   ADMIN_EMAIL: str(),
   ADMIN_CITY:str(),
+  MPESA_CONSUMER_KEY:str(),
+  MPESA_CONSUMER_SECRET:str(),
+  MPESA_PASSKEY:str(),
+  MPESA_PAYBILL:str(),
+  CALLBACK_URL:str()
 });
+

@@ -1,15 +1,9 @@
-"use client"
+
 import { Inter } from 'next/font/google'
 import './globals.css'
-import NavBar from '@/components/globals/NavBar'
-import Footer from '@/components/globals/Footer'
-import DonationModal from '@/components/globals/DonationModal'
-import { Toaster } from 'react-hot-toast';
-import RegistrationModal from '@/components/globals/JoiningRequestDialog'
+import { Providers } from '@/utils/providers'
 
 const inter = Inter({ subsets: ['latin'] })
-
-
 
 export default function RootLayout({
   children,
@@ -19,15 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
-        {children}
-        <DonationModal />
-        <RegistrationModal />
-        <Toaster 
-  position="top-center"
-  reverseOrder={false}
-/>
-        <Footer />
+        <Providers>
+          {children}
+        </Providers>
         </body>
     </html>
   )

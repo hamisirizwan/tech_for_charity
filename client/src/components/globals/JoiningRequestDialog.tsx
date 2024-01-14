@@ -1,31 +1,70 @@
 import useJoiningDialogStore from "@/store/joiningDialogStore";
+import useSuccessDialogStore from "@/store/successDialogStore";
+import { instance as axios } from "@/utils/axios";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 export default function RegistrationModal() {
   const { isOpen, closeDialog } = useJoiningDialogStore((state) => state);
+  const { openDialog } = useSuccessDialogStore();
   const [userData, setUserData] = useState({
     first_name: "",
-    last_name:"",
-    phone:""
-  })
+    last_name: "",
+    phone_number: "",
+    email: "",
+    country: "",
+    city: "",
+  });
 
-  function handleSubmit() {
-    const {phone, first_name, last_name} = userData
-    if(!phone || !first_name || !last_name){
-        return toast.error("fill in all details")
+  async function handleSubmit() {
+    const { phone_number, first_name, last_name, country, email, city } =
+      userData;
+    if (
+      !phone_number ||
+      !first_name ||
+      !last_name ||
+      !country ||
+      !email ||
+      !city
+    ) {
+      alert(JSON.stringify(userData));
+      return toast.error("fill in all details");
     }
-    closeDialog();
-    toast.success(`Your joining request has been sent to our admins, You will be contacted and approved once your orientation is done`, {
-        duration: 6000,
-    });
+
+    //send the request
+    try {
+      const { data } = await axios.post("/users/joining-request", userData);
+
+      closeDialog();
+      setUserData({
+        first_name: "",
+        last_name: "",
+        phone_number: "",
+        email: "",
+        country: "",
+        city: "",
+      });
+
+      openDialog({ message: "Your Request to join Humanity First Home has been received. You will be notified once any action is taken", title: "Request Sent Successfull" });
+      
+    } catch (error: any) {
+      if (error.response.data) {
+        toast.error(error?.response?.data?.message, {
+          duration: 4000,
+        });
+      } else {
+        toast.error("something wrong happened", {
+          duration: 4000,
+        });
+      }
+    }
   }
 
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={()=>{}}>
+        <Dialog as="div" className="relative z-10" onClose={() => {}}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -82,13 +121,14 @@ export default function RegistrationModal() {
                   </div>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                     Its not just an Organisation, Its a home. Welcome to the family
+                      Its not just an Organisation, Its a home. Welcome to the
+                      family
                     </p>
                   </div>
 
-{/* form goes here */}
+                  {/* form goes here */}
 
-<div className="relative mb-4">
+                  <div className="relative mb-4">
                     <label
                       htmlFor="phone"
                       className="leading-7 text-sm text-gray-600"
@@ -98,7 +138,12 @@ export default function RegistrationModal() {
                     <input
                       type="text"
                       name="first_name"
-                      onChange={(e)=>setUserData({...userData,[e.target.name]:e.target.value})}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                       value={userData.first_name}
                       className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -113,11 +158,17 @@ export default function RegistrationModal() {
                     <input
                       type="text"
                       name="last_name"
-                      onChange={(e)=>setUserData({...userData,[e.target.name]:e.target.value})}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                       value={userData.last_name}
                       className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
-                  </div><div className="relative mb-4">
+                  </div>
+                  <div className="relative mb-4">
                     <label
                       htmlFor="phone"
                       className="leading-7 text-sm text-gray-600"
@@ -126,9 +177,75 @@ export default function RegistrationModal() {
                     </label>
                     <input
                       type="text"
-                      name="phone"
-                      onChange={(e)=>setUserData({...userData,[e.target.name]:e.target.value})}
-                      value={userData.phone}
+                      name="phone_number"
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                      value={userData.phone_number}
+                      className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                  <div className="relative mb-4">
+                    <label
+                      htmlFor="email"
+                      className="leading-7 text-sm text-gray-600"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                      value={userData.email}
+                      className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                  <div className="relative mb-4">
+                    <label
+                      htmlFor="country"
+                      className="leading-7 text-sm text-gray-600"
+                    >
+                      Country
+                    </label>
+                    <input
+                      type="text"
+                      name="country"
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                      value={userData.country}
+                      className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                  <div className="relative mb-4">
+                    <label
+                      htmlFor="city"
+                      className="leading-7 text-sm text-gray-600"
+                    >
+                      City
+                    </label>
+                    <input
+                      type="text"
+                      name="city"
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                      value={userData.city}
                       className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>

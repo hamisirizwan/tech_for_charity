@@ -16,7 +16,8 @@ const addMember = async (req: apiREQ, res: Response) => {
       req.body
     );
     if (missingField) {
-      return res.status(400).json(`${missingField} is required`);
+      return res.status(400).json({status:400, message:`${missingField} is required`});
+      
     }
 
     // find user

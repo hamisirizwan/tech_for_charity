@@ -2,68 +2,63 @@ import { memberType } from "@/types";
 
 export const the_team :memberType[]= [
     {
-        name:"Shahinaz Hussein",
+        name:"Steve Jobs",
         title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Samirah Mohammed",
+        name:"Dev Riz",
         title:"Volunteer",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-20.12.57_782066b7-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Shahinaz Hussein",
+        name:"Steve Jobs",
         title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Samirah Mohammed",
+        name:"Dev Riz",
         title:"Volunteer",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-20.12.57_782066b7-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Shahinaz Hussein",
+        name:"Steve Jobs",
         title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Samirah Mohammed",
+        name:"Dev Riz",
         title:"Volunteer",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-20.12.57_782066b7-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Shahinaz Hussein",
+        name:"Steve Jobs",
         title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Samirah Mohammed",
+        name:"Dev Riz",
         title:"Volunteer",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-20.12.57_782066b7-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Shahinaz Hussein",
+        name:"Steve Jobs",
         title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Samirah Mohammed",
+        name:"Dev Riz",
         title:"Volunteer",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-20.12.57_782066b7-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Shahinaz Hussein",
-        title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
-    },
-    {
-        name:"Samirah Mohammed",
+        name:"Dev Riz",
         title:"Volunteer",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-20.12.57_782066b7-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     },
     {
-        name:"Shahinaz Hussein",
+        name:"Dev Riz",
         title:"Sub group leader",
-        image:"https://humanityfirsthome.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-04-at-16.30.25_f3fcfdab-150x150.jpg",
+        image:"https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     }
 ]
