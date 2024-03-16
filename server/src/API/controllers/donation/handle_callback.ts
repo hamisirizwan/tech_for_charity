@@ -1,35 +1,33 @@
 import { Request, Response } from "express";
-import validateJoiSchema from "../../utilities/helpers/validateJoiSchema";
-import { donationSchema } from "../../utilities/validators/donation.validation";
 import Mpesa from "../../utilities/payments/mpesa";
 import { normalizeKenyanPhoneNumber } from "../../utilities/helpers/normalizeKenyanNumber";
 
 const handleDonateCallback = async (req: Request, res: Response) => {
   //validate body
-//   const mpesa = new Mpesa();
-  try {
+  const mpesa = new Mpesa("");
 
-    console.log(req.body)
-
-    res.json("ok")
-    // const payload = validateJoiSchema(req.body, donationSchema, {
-    //   stripUnknown: true,
-    // });
-
-    // const { phoneNumber, amount } = payload;
-
-    // const phone = normalizeKenyanPhoneNumber(phoneNumber);
-
-    // const response = await mpesa.stkPush(phone, amount, payload);
-
-    // return res
-    //   .status(200)
-    //   .json({ message: `Stk push sent to ${phone}`, data: response });
-  } catch (error: any) {
-    console.log(error);
-    res.status(500).json({ message: error.message, status: 500 });
+  if (!req.body.Body.stkCallback.CallbackMetadata) {
+    console.log(req.body.Body.stkCallback.ResultDesc);
+    res.status(200).json("ok saf");
+    return;
   }
 
+  const body = req.body.Body.stkCallback.CallbackMetadata
+  const callbackData = mpesa.mapCallback(body)
+  const urlEncodedString = req.query.jsonData;
+  const jsonString = decodeURIComponent(urlEncodedString as string);
+  const jsonData = JSON.parse(jsonString);
+
+  try {
+
+    console.log(callbackData)
+    console.log(jsonData)
+
+    res.json("ok")
+  } catch (error: any) {
+    console.log(error);
+    res.status(200).json("ok saf");
+  }
 };
 
 export default handleDonateCallback
