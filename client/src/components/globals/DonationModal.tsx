@@ -69,9 +69,9 @@ export default function DonationModal() {
     if (!name) {
       return toast.error("name is required");
     }
-    // if (Amount < 20) {
-    //   return toast.error("donations below 20bob not allowed");
-    // }
+    if (Amount < 20) {
+      return toast.error("donations below 20bob not allowed");
+    }
 
     try {
       setIsSendingStk(true)
