@@ -12,7 +12,11 @@ class Mpesa {
   secretKey = env.MPESA_CONSUMER_SECRET;
   passKey = env.MPESA_PASSKEY;
   shortcode = env.MPESA_PAYBILL;
-  callbackUrl = env.CALLBACK_URL;
+  callbackUrl;
+
+  constructor(callbackurl:string){
+    this.callbackUrl = callbackurl
+  }
 
   async generateToken() {
     const auth: string = Buffer.from(
@@ -66,10 +70,10 @@ class Mpesa {
           TransactionType: "CustomerPayBillOnline",
           Amount: amount,
           PartyA: phone,
-          PartyB: this.shortcode,
+          PartyB: 522522,
           PhoneNumber: phone,
           CallBackURL: `${this.callbackUrl}/?jsonData=${urlEncodedString}`,
-          AccountReference: "techForCharity",
+          AccountReference: 1279306645,
           TransactionDesc: "techForCharity",
         },
         {

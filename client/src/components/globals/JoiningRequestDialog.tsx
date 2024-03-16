@@ -46,8 +46,11 @@ export default function RegistrationModal() {
         city: "",
       });
 
-      openDialog({ message: "Your Request to join Humanity First Home has been received. You will be notified once any action is taken", title: "Request Sent Successfull" });
-      
+      openDialog({
+        message:
+          "Your Request to join Humanity First Home has been received. You will be notified once any action is taken",
+        title: "Request Sent Successfull",
+      });
     } catch (error: any) {
       if (error.response.data) {
         toast.error(error?.response?.data?.message, {

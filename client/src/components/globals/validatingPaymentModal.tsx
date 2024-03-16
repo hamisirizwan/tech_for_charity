@@ -1,16 +1,14 @@
-import useSuccessDialogStore from '@/store/successDialogStore'
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import usePaymentProccessingDialogStore from "@/store/paymentProcessingDialogStore";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 
-
-export default function SuccessModal() {
-
-    const {isOpen, title, message,closeDialog} = useSuccessDialogStore()
+export default function ValidatingPaymentModal() {
+  const { isOpen } = usePaymentProccessingDialogStore();
 
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={()=>{}}>
+        <Dialog as="div" className="relative z-10" onClose={() => {}}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -34,29 +32,24 @@ export default function SuccessModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <div className='flex flex-col items-center justify-center'>
+                <Dialog.Panel className="flex flex-col items-center gap-4 justify-center w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    {title}
+                    PROCESSING PAYMENT
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                    {message}
-                    </p>
-                  </div>
+                  <div className="mt-2 space-y-4">
+                    <div className="flex space-x-2 justify-center items-center bg-white ">
+                      <span className="sr-only">Loading...</span>
+                      <div className="h-6 w-6 bg-black rounded-full animate-bounce [animation-delay:-0.3s]" />
+                      <div className="h-6 w-6 bg-black rounded-full animate-bounce [animation-delay:-0.15s]" />
+                      <div className="h-6 w-6 bg-black rounded-full animate-bounce" />
+                    </div>
 
-                  <div className="mt-6">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                      onClick={closeDialog}
-                    >
-                      Got it, thanks!
-                    </button>
-                  </div>
+                    <p className="text-sm text-gray-500">
+                      validating payment...
+                    </p>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -65,5 +58,5 @@ export default function SuccessModal() {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

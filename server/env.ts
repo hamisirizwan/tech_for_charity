@@ -16,6 +16,6 @@ export const env = cleanEnv(process.env, {
   MPESA_CONSUMER_SECRET:str(),
   MPESA_PASSKEY:str(),
   MPESA_PAYBILL:str(),
-  CALLBACK_URL:str()
+  DONATION_CALLBACK_URL:str()
 });
 

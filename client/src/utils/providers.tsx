@@ -14,6 +14,7 @@ import RegistrationModal from "@/components/globals/JoiningRequestDialog";
 import SuccessModal from "@/components/globals/SuccessModal";
 import Footer from "@/components/globals/Footer";
 import NavBar from "@/components/globals/NavBar";
+import ValidatingPaymentModal from "@/components/globals/validatingPaymentModal";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -37,6 +38,7 @@ export function Providers(props: { children: React.ReactNode }) {
       <DonationModal />
       <RegistrationModal />
       <SuccessModal />
+    <ValidatingPaymentModal />
       <Toaster position="top-center" reverseOrder={false} />
       <Footer />
     </QueryClientProvider>

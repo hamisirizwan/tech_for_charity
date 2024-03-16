@@ -5,19 +5,61 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { instance as axios } from "@/utils/axios";
 import toast from "react-hot-toast";
+import usePaymentProccessingDialogStore from "@/store/paymentProcessingDialogStore";
+import useSuccessDialogStore from "@/store/successDialogStore";
 
 export default function DonationModal() {
   //   let [isOpen, setIsOpen] = useState(true);
+  const { openDialog: openSuccessModal } = useSuccessDialogStore();
   const { isOpen, closeDialog } = usePaymentDialogStore((state) => state);
+  const {closeDialog:closePaymentProcessingModal, openDialog:openPaymentProcessingModal} = usePaymentProccessingDialogStore((state) => state)
   let [Amount, setAmount] = useState(0);
   let [phone, setPhone] = useState("");
   let [name, setName] = useState("");
-  let [stkSent, setStkSent] = useState(false);
+  let [isSendingStk, setIsSendingStk] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(null);
 
   const handleSelectAmount = (amount: any) => {
     setSelectedAmount(amount);
     setAmount(amount);
+  };
+
+  var reqcount = 0;
+  const stkPushQuery = (CheckoutRequestID: string) => {
+    const timer = setInterval(() => {
+      reqcount += 1;
+
+      if (reqcount === 15) {
+        //handle long payment
+        clearInterval(timer);
+        toast.error(`You took too long to pay`, {
+          duration: 4000,
+      });
+      closePaymentProcessingModal()
+      }
+      axios
+        .post("/donation/mpesa-query", {
+          CheckoutRequestID,
+        })
+        .then((response) => {
+          if (response.data.data.ResultCode === "0") {
+            clearInterval(timer);
+            closePaymentProcessingModal()
+            openSuccessModal({ message: "Your Payment Have Received Successfully", title: "Payment Received Successfully" })
+            //handle payment successfull
+          } else {
+            clearInterval(timer);
+            closePaymentProcessingModal()
+            toast.error(response.data.data.ResultDesc, {
+              duration: 4000,
+          });
+            //handle errors
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 2000);
   };
 
   async function handleSubmit() {
@@ -27,29 +69,36 @@ export default function DonationModal() {
     if (!name) {
       return toast.error("name is required");
     }
-    if (Amount < 20) {
-      return toast.error("donations below 20bob not allowed");
-    }
+    // if (Amount < 20) {
+    //   return toast.error("donations below 20bob not allowed");
+    // }
 
     try {
+      setIsSendingStk(true)
       const { data } = await axios.post("/donation/mpesa", {
         name: name,
         phoneNumber: phone,
         amount: Amount,
       });
 
-      console.log(data);
+      // console.log(data.data.CheckoutRequestID
+      //   );
 
-      // setStkSent(true);
+      setIsSendingStk(false)
       closeDialog();
       setSelectedAmount(null);
       setAmount(0);
       setPhone("");
       setName("");
       toast.success(`STK PUSH SENT ${phone}!\nEnter pin to confirm donation`, {
-          duration: 6000,
+          duration: 4000,
       });
+      openPaymentProcessingModal()
+      stkPushQuery(data.data.CheckoutRequestID);
+      //stk query logic comes here
+
     } catch (error: any) {
+      setIsSendingStk(false)
       if (error.response.data) {
         toast.error(error?.response?.data?.message, {
           duration: 4000,
@@ -62,19 +111,9 @@ export default function DonationModal() {
     }
   }
 
-  const amounts: number[] = [100, 200, 300, 500, 1000, 5000, 10000];
+  const amounts: number[] = [20, 50 ,100, 200, 300, 500, 1000, 5000, 10000];
   return (
     <>
-      {/* <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-        >
-          Open dialog
-        </button>
-      </div> */}
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={() => {}}>
           <Transition.Child
@@ -149,6 +188,7 @@ export default function DonationModal() {
                         {amounts.map((amount, index) =>
                           amount === selectedAmount ? (
                             <div
+                            key={index}
                               className="bg-primary text-white 
                                 text-sm font-medium px-1 py-2 rounded text-center cursor-pointer"
                               onClick={() => handleSelectAmount(amount)}
@@ -157,6 +197,7 @@ export default function DonationModal() {
                             </div>
                           ) : (
                             <div
+                            key={index}
                               className="bg-gray-100 text-gray-800 hover:bg-primary hover:text-white
                             text-sm font-medium px-1 py-2 rounded text-center cursor-pointer"
                               onClick={() => handleSelectAmount(amount)}
@@ -216,8 +257,9 @@ export default function DonationModal() {
                           type="button"
                           className="inline-flex justify-center rounded-md border border-transparent bg-red-300 px-8 py-2 text-sm font-medium text-secondary hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 tracking-wider"
                           onClick={handleSubmit}
+                          disabled={isSendingStk}
                         >
-                          Donate
+                          { isSendingStk ? "Processing.." : "Donate"}
                         </button>
                       </div>
                     </div>

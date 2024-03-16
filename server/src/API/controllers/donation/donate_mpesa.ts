@@ -3,10 +3,13 @@ import validateJoiSchema from "../../utilities/helpers/validateJoiSchema";
 import { donationSchema } from "../../utilities/validators/donation.validation";
 import Mpesa from "../../utilities/payments/mpesa";
 import { normalizeKenyanPhoneNumber } from "../../utilities/helpers/normalizeKenyanNumber";
+import { env } from "../../../../env";
 
 const donateMpesa = async (req: Request, res: Response) => {
   //validate body
-  const mpesa = new Mpesa();
+  const callbackUrl = env.DONATION_CALLBACK_URL
+
+  const mpesa = new Mpesa(callbackUrl);
   try {
     const payload = validateJoiSchema(req.body, donationSchema, {
       stripUnknown: true,
@@ -25,7 +28,6 @@ const donateMpesa = async (req: Request, res: Response) => {
     console.log(error);
     res.status(500).json({ message: error.message, status: 500 });
   }
-
 };
 
 export default donateMpesa
