@@ -9,8 +9,8 @@
     "start": "node dist/src/index.js",
     "dev": "nodemon src/index.ts",
     "postinstall": "prisma generate",
-    "dev:seed:superadmin": "ts-node src/api/seeders/super_admin_seeder.ts",
-    "prod:seed:superadmin": "node dist/src/api/seeders/super_admin_seeder.js"
+    "seed:superadmin": "ts-node src/API/seeders/super_admin_seeder.ts",
+    "prod:seed:superadmin": "node dist/src/API/seeders/super_admin_seeder.js"
   },
   "keywords": [],
   "author": "",
