@@ -1,20 +1,9 @@
-"use client"
-
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { useEffect, useLayoutEffect } from 'react'
+import { redirect } from "next/navigation";
 
 export default function Home() {
-
-  
-  const router = useRouter()
-  useLayoutEffect(() => {
-     router.push("/login")
-  }, [])
-
+  redirect("/login");
   return (
-  <div>
-    <h1>redirecting....</h1>
-  </div>
-  )
+    <div>
+    </div>
+  );
 }
