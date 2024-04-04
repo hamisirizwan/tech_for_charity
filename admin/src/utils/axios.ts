@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: "http://localhost:8000/api/v1",
+  baseURL: "https://tech-for-charity-api.kreativelabske.com/api/v1",
 });
 
 // Set the AUTH token for any request
