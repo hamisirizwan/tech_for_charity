@@ -10,6 +10,11 @@ import TimeAgo from 'javascript-time-ago'
 
 import en from 'javascript-time-ago/locale/en.json'
 
+import '@mantine/core/styles.css';
+
+import { MantineProvider } from '@mantine/core';
+import { theme } from "./theme";
+
 
 TimeAgo.addDefaultLocale(en)
 
@@ -28,7 +33,12 @@ export function Providers(props: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster position="top-center" reverseOrder={false} />
-      {props.children}
+      <MantineProvider theme={theme} defaultColorScheme="light">
+        
+        {props.children}
+       
+        
+        </MantineProvider>
     </QueryClientProvider>
   );
 }

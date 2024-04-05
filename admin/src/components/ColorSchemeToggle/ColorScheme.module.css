@@ -1,0 +1,22 @@
+.icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* Dark Mode Styles */
+.dark .light {
+    display: none;
+}
+
+.dark .dark {
+    display: block;
+}
+
+/* Light Mode Styles */
+.light .light {
+    display: block;
+}
+
+.light .dark {
+    display: none;
+}
