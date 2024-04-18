@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 export default function RegistrationModal() {
   const { isOpen, closeDialog } = useJoiningDialogStore((state) => state);
+  const [submittingRequest , setSubmittingRequest] = useState(false)
   const { openDialog } = useSuccessDialogStore();
   const [userData, setUserData] = useState({
     first_name: "",
@@ -33,9 +34,12 @@ export default function RegistrationModal() {
     }
 
     //send the request
-    try {
-      const { data } = await axios.post("/users/joining-request", userData);
 
+    setSubmittingRequest(true)
+    try {
+      
+      const { data } = await axios.post("/users/joining-request", userData);
+      setSubmittingRequest(false)
       closeDialog();
       setUserData({
         first_name: "",
@@ -52,6 +56,7 @@ export default function RegistrationModal() {
         title: "Request Sent Successfull",
       });
     } catch (error: any) {
+      setSubmittingRequest(false)
       if (error.response.data) {
         toast.error(error?.response?.data?.message, {
           duration: 4000,
@@ -255,10 +260,12 @@ export default function RegistrationModal() {
                   <div className="mt-4">
                     <button
                       type="button"
+                      disabled={submittingRequest}
                       className="inline-flex justify-center rounded-md border border-transparent bg-red-300 px-8 py-2 text-sm font-medium text-secondary hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 tracking-wider"
                       onClick={handleSubmit}
                     >
-                      Send Request
+                      {submittingRequest ? "Processing..": "Send Request"}
+                     
                     </button>
                   </div>
                 </Dialog.Panel>
