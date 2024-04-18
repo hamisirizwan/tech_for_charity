@@ -67,7 +67,7 @@ function Footer() {
           <h2 className="text-xl font-semibold">Quick Contact Info</h2>
         </div>
         <div className="space-y-3">
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
             <svg
               className="w-5 h-auto text-[#ed3103] shrink-0"
               xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ function Footer() {
             <p className="text-sm">
               12th Flr, West Park Towers, Westlands, Nairobi
             </p>
-          </div>
+          </div> */}
           <div className="flex items-center gap-3">
             <svg
              className="w-5 h-auto text-[#ed3103] shrink-0"
